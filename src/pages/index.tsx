@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { Inter } from "next/font/google";
-
+import { SideBar } from "@/component/SideBar";
 const inter = Inter({ subsets: ["latin"] });
 
 let sideMenuData = [
@@ -70,5 +70,13 @@ let sideMenuData = [
 ];
 
 export default function Home() {
-  return <main className="flex justiry-center items-center"></main>;
+  return (
+    <main className="flex w-full h-screen justify-center items-center">
+      <div className="w-[1/4] h-screen bg-green-00">
+        {" "}
+        This is side bar <SideBar />
+      </div>
+      <div className="w-[3/4] h-screen bg-blue-300">This is components</div>
+    </main>
+  );
 }
