@@ -81,19 +81,38 @@ export default function Home() {
         <SideBar setState={setState} />
       </div>
       <div className="flex w-[85%] h-screen bg-blue-300">
-        switch (state) case "phone": return ({" "}
-        <div className={`${state == "phone" ? "pt-10 block" : "hidden"}`}>
-          <PhoneCard sideMenuData={sideMenuData} />
-        </div>
-        ) case "computer": return ({" "}
-        <div className={`${state == "computer" ? "pt-10 block" : "hidden"}`}>
-          <ComputerCard sideMenuData={sideMenuData} />
-        </div>
-        ) case "television": return ({" "}
-        <div className={`${state == "television" ? "pt-10 block" : "hidden"}`}>
-          <TelevisionCard sideMenuData={sideMenuData} />
-        </div>
-        )
+        {() => {
+          switch (state) {
+            case "phone":
+              return (
+                <div
+                  className={`${state == "phone" ? "pt-10 block" : "hidden"}`}
+                >
+                  <PhoneCard sideMenuData={sideMenuData} />
+                </div>
+              );
+            case "computer":
+              return (
+                <div
+                  className={`${
+                    state == "computer" ? "pt-10 block" : "hidden"
+                  }`}
+                >
+                  <ComputerCard sideMenuData={sideMenuData} />
+                </div>
+              );
+            case "television":
+              return (
+                <div
+                  className={`${
+                    state == "television" ? "pt-10 block" : "hidden"
+                  }`}
+                >
+                  <TelevisionCard sideMenuData={sideMenuData} />
+                </div>
+              );
+          }
+        }}
       </div>
     </div>
   );
