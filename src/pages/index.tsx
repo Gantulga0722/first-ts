@@ -1,6 +1,10 @@
 import Image from "next/image";
 import { Inter } from "next/font/google";
-import { SideBar } from "@/component/SideBar";
+import { SideBar } from "@/components/SideBar";
+import { PhoneCard } from "@/components/PhoneCard";
+import { ComputerCard } from "@/components/ComputerCard";
+import { TelevisionCard } from "@/components/TelevisionCard";
+import { useState } from "react";
 const inter = Inter({ subsets: ["latin"] });
 
 let sideMenuData = [
@@ -70,13 +74,27 @@ let sideMenuData = [
 ];
 
 export default function Home() {
+  const [state, setState] = useState<string>("phone");
   return (
-    <main className="flex w-full h-screen justify-center items-center">
-      <div className="w-[1/4] h-screen bg-green-00">
-        {" "}
-        This is side bar <SideBar />
+    <div className="flex w-[100%] ">
+      <div className="flex w-[15%] justify-center h-screen bg-green-300">
+        <SideBar setState={setState} />
       </div>
-      <div className="w-[3/4] h-screen bg-blue-300">This is components</div>
-    </main>
+      <div className="flex w-[85%] h-screen bg-blue-300">
+        switch (state) case "phone": return ({" "}
+        <div className={`${state == "phone" ? "pt-10 block" : "hidden"}`}>
+          <PhoneCard sideMenuData={sideMenuData} />
+        </div>
+        ) case "computer": return ({" "}
+        <div className={`${state == "computer" ? "pt-10 block" : "hidden"}`}>
+          <ComputerCard sideMenuData={sideMenuData} />
+        </div>
+        ) case "television": return ({" "}
+        <div className={`${state == "television" ? "pt-10 block" : "hidden"}`}>
+          <TelevisionCard sideMenuData={sideMenuData} />
+        </div>
+        )
+      </div>
+    </div>
   );
 }
